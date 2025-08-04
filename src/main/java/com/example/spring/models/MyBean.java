@@ -2,7 +2,10 @@ package com.example.spring.models;
 
 import org.springframework.stereotype.Component;
 
-@Component
+// Stereotype annotation used to create Spring beans automatically in ApplicationContext
+// Includes @Component, @Service, @Repository (for DAO pattern), @Controller
+@Component // Used for the ComponentScan feature
+
 public class MyBean {
     // Bean implementation code
 	private String beanName;

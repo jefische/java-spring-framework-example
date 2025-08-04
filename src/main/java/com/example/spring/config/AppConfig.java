@@ -15,13 +15,13 @@ import com.example.spring.models.MyBean;
 // To use component scanning, you need to specify the packages to scan. You can do this using the @ComponentScan annotation or the 
 // <context:component-scan> element in XML.
 
-// @ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = "com.example")
 public class AppConfig {
     // Configuration code
 
-	// This can be used instead of ComponentScan to define the object, aka Java Based Configuration.
-	@Bean
-	public MyBean bean() {
-		return new MyBean();
-	}
+	// This can be used instead of @ComponentScan and @Component to define the object, aka Java Based Configuration.
+	// @Bean
+	// public MyBean bean() {
+	// 	return new MyBean();
+	// }
 }
