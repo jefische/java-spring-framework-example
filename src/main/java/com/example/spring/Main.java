@@ -17,8 +17,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
+// @Configuration
 @SpringBootApplication
-@Configuration
 public class Main {
 
 	@Value("${spring.application.name}")
