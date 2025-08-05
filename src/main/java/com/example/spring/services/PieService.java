@@ -14,9 +14,9 @@ public class PieService {
 	private List<Pie> pieList = new ArrayList<>();
 
 	{
-		Pie pie1 = new Pie("Cherry", 800, 6);
-		Pie pie2 = new Pie("Apple", 700, 3);
-		Pie pie3 = new Pie("BootPie", 10000, 8);
+		Pie pie1 = new Pie("Cherry", 6, 800);
+		Pie pie2 = new Pie("Apple", 3, 700);
+		Pie pie3 = new Pie("BootPie", 8, 10000);
 
 		pieList.add(pie1);
 		pieList.add(pie2);
@@ -30,6 +30,18 @@ public class PieService {
 
 	public List<Pie> getPieList() {
 		return pieList;
+	}
+
+	public List<Pie> getPiesByCalories(int limit) throws ResourceNotFoundException {
+		List<Pie> caloriePieList = new ArrayList<>();
+
+		for(Pie pie:pieList) {
+			if(pie.getCalories() <= limit) {
+				caloriePieList.add(pie);
+			}
+		}
+		if(caloriePieList.isEmpty()) throw new ResourceNotFoundException("No pies exist with calories equal to or lower than " + limit);
+		return caloriePieList;
 	}
 
 	public Pie findPie(String pieName) throws ResourceNotFoundException {
