@@ -1,8 +1,18 @@
 package com.example.spring.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+
+@Entity
+@Table
 public class Pie {
 	
+	@Id
+	@Column(name = "pie_name") // to ensure snake casing in variable names?
 	private String name;
+
 	private int slices;
 	private int calories;
 
