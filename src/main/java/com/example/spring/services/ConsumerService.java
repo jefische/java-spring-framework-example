@@ -36,7 +36,8 @@ public class ConsumerService {
 	}
 
 	public void order(String username, String pieName) {
-		Consumer consumer = consumerRepository.findById(username).orElseThrow();
+		Consumer consumer = consumerRepository.findById(username)
+							.orElseThrow(() -> new ResourceNotFoundException(username + " was not found in the list. Please check username and try again."));
 		consumer.setLastPie(pieService.findPie(pieName));
 		consumerRepository.save(consumer);
 		// for(Consumer consumer:consumerList) {
@@ -50,7 +51,11 @@ public class ConsumerService {
 
 	// TODO: Custom query
 	public void login(String username, String password) throws AuthenticationException {
-		consumerRepository.findByUsernameAndPassword(username, password);
+		if (consumerRepository.findByUsernameAndPassword(username, password).isEmpty()) {
+        	throw new AuthenticationException("Check username and password credentials as they are invalid");
+    	} else {
+			consumerRepository.findByUsernameAndPassword(username, password);
+		}
 		// for(Consumer consumer:consumerList) {
 		// 	if(consumer.getUsername().equals(username) && consumer.getPassword().equals(password)) {
 		// 		return;
